@@ -1,17 +1,17 @@
 const { exec } = require('child_process');
 const express = require('express');
+const { networkInterfaces } = require('os');
 const path = require('path');
+
 const public = path.join(__dirname, 'public');
 
 const app = express();
 const port = 3121;
 app.use(express.static(public));
 
-// send commands to a running mpv process via ipc
-// mpv --input-ipc-server=/tmp/mpvsocket example.mp4
-
 app.get('/', (req, res) => res.sendFile(path.join(public, 'index.html')));
 
+// socket location for ipc with mpv invoked with --input-ipc-server
 const mpvSocket = '/tmp/mpvsocket';
 
 app.get('/play-pause', (req, res) => {
@@ -26,4 +26,7 @@ app.get('/go-back', (req, res) => {
   res.status(200).send();
 });
 
-app.listen(port, () => console.log(`app listening on port ${port}`));
+const getNetworkIPAddress = () =>
+  networkInterfaces()['en0'].find(elem => elem.address.startsWith('192')).address;
+
+app.listen(port, () => console.log(`mpv remote listening on: ${getNetworkIPAddress()}:${port}`));
