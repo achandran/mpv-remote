@@ -1,0 +1,11 @@
+{
+  "name": "mpv-remote",
+  "version": "1.0.0",
+  "author": "Anand Chandran <hello@achandran.com>",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
