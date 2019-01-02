@@ -1,5 +1,6 @@
 body {
   background-color: #282828;
+  touch-action: manipulation;
 }
 
 .container {
@@ -8,22 +9,17 @@ body {
   height: 100%;
 }
 .media-control {
-  background-color: #fbf1c7;
+  box-sizing: border-box;
+  background-color: #d79921;
   height: 600px;
-  line-height: 600px;
-  white-space: nowrap;
   width: 600px;
   margin: 50 auto;
-  text-align: center;
-  font-size: 100px;
-  border: 1px solid black;
+  padding: 10px;
   cursor: pointer;
 }
 
-img {
-  border: 1px solid green;
-}
-
-#play-pause {
-  letter-spacing: -8px;
+.highlight {
+  padding: 30px;
+  transform: scale(0.9);
+  transition: 0.30s all ease;
 }
