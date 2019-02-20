@@ -6,7 +6,7 @@ const path = require('path');
 const public = path.join(__dirname, 'public');
 
 const app = express();
-const port = 3121;
+const port = 80;
 app.use(express.static(public));
 
 app.get('/', (req, res) => res.sendFile(path.join(public, 'index.html')));
@@ -29,4 +29,4 @@ app.get('/go-back', (req, res) => {
 const getNetworkIPAddress = () =>
   networkInterfaces()['en0'].find(elem => elem.address.startsWith('192')).address;
 
-app.listen(port, () => console.log(`mpv remote listening on: ${getNetworkIPAddress()}:${port}`));
+app.listen(port, () => console.log(`mpv remote listening on: ${getNetworkIPAddress()}`));
