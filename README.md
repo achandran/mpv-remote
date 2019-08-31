@@ -10,12 +10,12 @@ Install the dependencies and start the server.
 
 ```sh
 $ yarn install
-$ node app.js
+$ node app.js {optional_port_number}
 ```
 
 If the installation was successful, you'll see a message like:
 ```
-mpv remote listening on: 192.168.0.xxx:3121
+mpv remote listening on: 192.168.0.xxx:{port number}
 ```
 Now using a phone browser, visit the local network ip address from the above message, which should let you see the playback controls.
 
