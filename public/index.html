@@ -1,19 +1,82 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>
-    MPV Remote Control
-  </title>
-  <script type='text/javascript' src='scripts/eventListeners.js'></script>
-  <link rel='stylesheet' type='text/css' href='styles/style.css' />
-  <link rel="apple-touch-icon" sizes="120x120" href="images/touch-icon-iphone-retina.png">
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8 user-scalable=0">
+    <title>mpv-remote</title>
+    <style type="text/css">
+        *{
+            padding:0;
+            margin:0;
+        }
+        .content{
+            width: 400px;height: 400px;position: relative;margin:100px auto;left: 0;top:50%;bottom: 0;right:0;
+            box-shadow: 0px 0px 110px rgba(180, 180, 180, 0.3) inset,0px 0px 5px #D3D3D3;
+        }
+        .quartercircle{
+            position:absolute;width: 200px;height: 200px;-webkit-border-radius: 200px 0 0 0;
+        }
+        .divLeft{
+            top: 25%;left: -10%; transform:rotate(-45deg);background-color: bisque ;
+        }
+        .divTop{
+            top: -10%;left: 25%; transform:rotate(45deg);background-color: burlywood ;
+        }
+        .divRight{
+            top: 25%;left: 60%;transform:rotate(135deg);background-color: darkgray ;
+        }
+        .divBottom{
+            top: 60%;left: 25%;transform:rotate(-135deg);background-color: darkkhaki ;
+        }
+	.button{
+	    text-align: center ;
+	}
+	.bsvg{
+	    margin-top:70px;
+	    width:50px;
+	    height:50px; 
+	}
+        .circle{
+          width:50%;height:50%;position: absolute;z-index: 100;top:0%;left:0%;bottom:0;right: 0;margin:auto;border-radius: 100%;background-color: #889900;text-align: center;
+        }
+        .circle span{
+            display: block;width: 100%;height: 100%;line-height: 200px;font-size: 24px;
+        }
+        .quartercircle a{
+            position: absolute;width: 100%;height: 100%;
+            background: #888888;
+        }
+        .quartercircle a:hover{
+            background: #8BFF7C;
+        }
+	.inline {
+   	   display:inline-block;text-align:center;
+           margin-right:20px;
+	}
+
+    </style>
 
 <body>
-  <section class='container'>
-    <div id='go-back' class='media-control'><img src='images/go-back.svg' alt='go back button'></img></div>
-    <div id='play-pause' class='media-control'><img src='images/play-pause.svg' alt='play/pause button'></div>
-  </section>
-</body>
 
+<div class="content" style="height:200px;text-align:center;">
+	<a href="/quit" class="inline button" id="quit"><svg class="bsvg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg></a>
+	<a href="/mute" class="inline button" id="mute"><svg class="bsvg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" clip-rule="evenodd"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"></path></svg></a>
+</div>
+<div class="content" style="">
+    <div class="quartercircle divLeft" style="">
+            <a href="/go-back" class="button" style="transform:rotate(45deg);background-color: transparent"><svg class="bsvg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.066 11.2a1 1 0 000 1.6l5.334 4A1 1 0 0019 16V8a1 1 0 00-1.6-.8l-5.333 4zM4.066 11.2a1 1 0 000 1.6l5.334 4A1 1 0 0011 16V8a1 1 0 00-1.6-.8l-5.334 4z"></path></svg></a>
+    </div>
+    <div class="quartercircle divTop" style="">
+	    <a href="/volume-down" class="button" style="transform:rotate(135deg);background-color: transparent;"><svg class="bsvg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg></a>
+    </div>
+    <div class="quartercircle divRight" style="">
+	    <a href="/go-forward" class="button" style="transform:rotate(-135deg);background-color: transparent;"><svg class="bsvg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.933 12.8a1 1 0 000-1.6L6.6 7.2A1 1 0 005 8v8a1 1 0 001.6.8l5.333-4zM19.933 12.8a1 1 0 000-1.6l-5.333-4A1 1 0 0013 8v8a1 1 0 001.6.8l5.333-4z"></path></svg></a>
+    </div>
+    <div class="quartercircle divBottom" style="">
+        <a href="/volume-up" class="button" style="transform:rotate(135deg);background-color: transparent;"><svg class="bsvg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg></a>
+    </div>
+    <div class="circle" style=""><span style=""><a href='/play-pause' >PLAY/PAUSE</span></a></div>
+</div>
+
+</body>
 </html>

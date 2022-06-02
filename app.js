@@ -14,41 +14,49 @@ const app = express();
 app.use(express.static(public));
 app.get('/', (req, res) => res.sendFile(path.join(public, 'index.html')));
 
+var goback=(res) => {
+  res.redirect('/'); 
+}
+
 app.get('/play-pause', (req, res) => {
   const playPauseCycle = getcommandstr('cycle pause');
   exec(playPauseCycle);
-  res.status(200).send();
+  goback(res);
 });
 
 app.get('/go-forward', (req, res) => {
   const goForward = getcommandstr('keypress right');
   exec(goForward);
-  res.status(200).send();
+  goback(res);
 });
 
 app.get('/go-back', (req, res) => {
   const goBack = getcommandstr('keypress left');
   exec(goBack);
-  res.status(200).send();
+  goback(res);
 });
 
 app.get('/volume-up', (req, res) => {
   const volumeUp = getcommandstr('keypress 0');
   exec(volumeUp);
-  res.status(200).send();
+  goback(res);
 });
 
 app.get('/volume-down', (req, res) => {
   const volumeDown = getcommandstr('keypress 9');
   exec(volumeDown);
-  res.status(200).send();
+  goback(res);
+});
+
+app.get('/mute', (req, res) => {
+  exec(getcommandstr('keypress m'));
+  goback(res);
 });
 
 app.get('/quit', (req, res) => {
   exec(getcommandstr('quit'));
-  res.status(200).send();
+  goback(res);
 });
-
 
 
 app.listen(port, () => console.log(`mpv remote listening on: ${port}`));
