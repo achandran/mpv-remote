@@ -6,6 +6,6 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.17.3"
   }
 }
